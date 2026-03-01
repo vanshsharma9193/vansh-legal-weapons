@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vansh Weapons – Premium Legal Weapons & Tactical Gear</title>
+  <meta name="description" content="Vansh Weapons – India's premier destination for legal weapons, tactical gear, hunting knives, bows, and self-defense tools. Shop premium quality at unbeatable prices." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">VW</div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+      <p class="preloader-text">Loading Arsenal...</p>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <div class="announcement-slider">
+      <span>🔥 Free Shipping on Orders Above ₹5,000 &nbsp;|&nbsp; 🛡️ All Products 100% Legal &nbsp;|&nbsp; ⚡ Express Delivery Available &nbsp;|&nbsp; 🇮🇳 Made in India Products &nbsp;|&nbsp; 🔥 Free Shipping on Orders Above ₹5,000 &nbsp;|&nbsp; 🛡️ All Products 100% Legal &nbsp;|&nbsp; ⚡ Express Delivery Available</span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <nav class="nav-container">
+      <div class="nav-logo">
+        <div class="logo-emblem">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#c8a84b" stroke-width="2" fill="none"/>
+            <polygon points="18,7 29,13 29,23 18,29 7,23 7,13" fill="#c8a84b" opacity="0.15"/>
+            <text x="18" y="23" text-anchor="middle" fill="#c8a84b" font-size="12" font-weight="700" font-family="Oswald">V</text>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">VANSH</span>
+          <span class="logo-sub">WEAPONS</span>
+        </div>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="#categories" class="nav-link">Categories <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" onclick="filterProducts('knives')">🔪 Hunting Knives</a></li>
+            <li><a href="#" onclick="filterProducts('bow')">🏹 Bows & Arrows</a></li>
+            <li><a href="#" onclick="filterProducts('tactical')">⚡ Tactical Gear</a></li>
+            <li><a href="#" onclick="filterProducts('selfdefense')">🛡️ Self-Defense</a></li>
+            <li><a href="#" onclick="filterProducts('accessories')">🔧 Accessories</a></li>
+          </ul>
+        </li>
+        <li><a href="#products" class="nav-link">Shop</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" id="searchToggle" title="Search" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <button class="nav-icon-btn" title="Wishlist" aria-label="Wishlist" onclick="showNotification('Wishlist coming soon!')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <button class="nav-icon-btn cart-btn" title="Cart" aria-label="Cart" onclick="toggleCart()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- SEARCH BAR -->
+    <div class="search-bar" id="searchBar">
+      <div class="search-inner">
+        <input type="text" id="searchInput" placeholder="Search weapons, gear, accessories..." oninput="handleSearch(this.value)" />
+        <button onclick="closeSearch()">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Arsenal</h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="empty-cart">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <p>Your cart is empty</p>
+        <span>Add some gear to get started</span>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="btn-primary" onclick="showNotification('Checkout coming soon! 🛒')">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-particle" id="particles"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>100% Legal &amp; Certified</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-sub">WELCOME TO</span>
+        <span class="hero-title-main">VANSH<br /><em>WEAPONS</em></span>
+      </h1>
+      <p class="hero-desc">India's premier destination for premium legal weapons, tactical gear, and self-defense tools. Crafted for warriors. Built to last.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn-primary" id="shopNowBtn">
+          <span>Shop Now</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#categories" class="btn-ghost">Browse Categories</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="500">0</span><span>+</span>
+          <span class="stat-label">Products</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="15000">0</span><span>+</span>
+          <span class="stat-label">Happy Customers</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="12">0</span><span>+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-ring ring-1"></div>
+      <div class="hero-ring ring-2"></div>
+      <div class="hero-ring ring-3"></div>
+      <div class="hero-emblem">
+        <svg width="220" height="220" viewBox="0 0 220 220">
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f0d060"/>
+              <stop offset="50%" style="stop-color:#c8a84b"/>
+              <stop offset="100%" style="stop-color:#8b6914"/>
+            </linearGradient>
+          </defs>
+          <!-- Shield -->
+          <path d="M110 20 L190 55 L190 120 Q190 170 110 200 Q30 170 30 120 L30 55 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2.5"/>
+          <path d="M110 35 L175 65 L175 120 Q175 160 110 185 Q45 160 45 120 L45 65 Z" fill="#c8a84b" opacity="0.08"/>
+          <!-- Crossed swords -->
+          <line x1="75" y1="75" x2="145" y2="145" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="145" y1="75" x2="75" y2="145" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Sword guards -->
+          <line x1="92" y1="92" x2="75" y2="75" stroke="url(#goldGrad)" stroke-width="4"/>
+          <line x1="95" y1="79" x2="79" y2="95" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+          <line x1="128" y1="92" x2="145" y2="75" stroke="url(#goldGrad)" stroke-width="4"/>
+          <line x1="125" y1="79" x2="141" y2="95" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+          <!-- Star -->
+          <polygon points="110,95 113,105 124,105 115,111 118,121 110,115 102,121 105,111 96,105 107,105" fill="url(#goldGrad)"/>
+          <!-- Text -->
+          <text x="110" y="168" text-anchor="middle" fill="#c8a84b" font-size="11" font-family="Oswald" letter-spacing="4">VANSH WEAPONS</text>
+          <!-- Dots decoration -->
+          <circle cx="110" cy="180" r="2" fill="#c8a84b"/>
+          <circle cx="100" cy="183" r="1.5" fill="#c8a84b" opacity="0.6"/>
+          <circle cx="120" cy="183" r="1.5" fill="#c8a84b" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <a href="#categories">
+        <span>Scroll</span>
+        <div class="scroll-line"><div class="scroll-dot"></div></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TRUST BADGES -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">🛡️</div>
+          <div>
+            <h4>100% Legal</h4>
+            <p>All products comply with Indian Arms Act & local regulations</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🚚</div>
+          <div>
+            <h4>Fast Shipping</h4>
+            <p>Pan-India delivery within 3-5 business days</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🔒</div>
+          <div>
+            <h4>Secure Payments</h4>
+            <p>256-bit SSL encrypted payment gateway</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">🏆</div>
+          <div>
+            <h4>Quality Guarantee</h4>
+            <p>Premium grade materials with 1-year warranty</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES SECTION -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Browse By Type</span>
+        <h2 class="section-title">Our <span class="gold">Categories</span></h2>
+        <p class="section-desc">Explore our wide range of premium legal weapons and tactical equipment</p>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card" onclick="filterProducts('knives'); scrollToProducts();">
+          <div class="cat-bg cat-bg-1"></div>
+          <div class="cat-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M8 40 L38 10 L42 14 L16 44 Z" fill="#c8a84b" opacity="0.8"/>
+              <path d="M38 10 L44 8 L42 14 Z" fill="#f0d060"/>
+              <rect x="5" y="38" width="8" height="5" rx="1" fill="#888" transform="rotate(-45 9 40.5)"/>
+            </svg>
+          </div>
+          <h3>Hunting Knives</h3>
+          <p>Premium blades for hunting & outdoor survival</p>
+          <span class="cat-count">85+ Products</span>
+          <div class="cat-arrow">→</div>
+        </div>
+        <div class="category-card" onclick="filterProducts('bow'); scrollToProducts();">
+          <div class="cat-bg cat-bg-2"></div>
+          <div class="cat-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M8 40 Q20 30 12 8" stroke="#c8a84b" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <path d="M8 40 L8 8" stroke="#f0d060" stroke-width="1.5"/>
+              <path d="M26 24 L8 24" stroke="#c8a84b" stroke-width="2"/>
+              <path d="M38 20 L26 24 L38 28 L36 24 Z" fill="#c8a84b"/>
+            </svg>
+          </div>
+          <h3>Bows & Arrows</h3>
+          <p>Recurve, compound bows & archery equipment</p>
+          <span class="cat-count">60+ Products</span>
+          <div class="cat-arrow">→</div>
+        </div>
+        <div class="category-card" onclick="filterProducts('tactical'); scrollToProducts();">
+          <div class="cat-bg cat-bg-3"></div>
+          <div class="cat-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="16" stroke="#c8a84b" stroke-width="2.5" fill="none"/>
+              <circle cx="24" cy="24" r="8" stroke="#c8a84b" stroke-width="1.5" fill="none"/>
+              <circle cx="24" cy="24" r="3" fill="#c8a84b"/>
+              <line x1="24" y1="8" x2="24" y2="16" stroke="#c8a84b" stroke-width="2"/>
+              <line x1="24" y1="32" x2="24" y2="40" stroke="#c8a84b" stroke-width="2"/>
+              <line x1="8" y1="24" x2="16" y2="24" stroke="#c8a84b" stroke-width="2"/>
+              <line x1="32" y1="24" x2="40" y2="24" stroke="#c8a84b" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Tactical Gear</h3>
+          <p>Professional grade equipment for outdoor ops</p>
+          <span class="cat-count">120+ Products</span>
+          <div class="cat-arrow">→</div>
+        </div>
+        <div class="category-card" onclick="filterProducts('selfdefense'); scrollToProducts();">
+          <div class="cat-bg cat-bg-4"></div>
+          <div class="cat-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M24 6 L38 12 L38 26 Q38 36 24 42 Q10 36 10 26 L10 12 Z" stroke="#c8a84b" stroke-width="2.5" fill="none"/>
+              <path d="M24 12 L32 16 L32 26 Q32 32 24 36 Q16 32 16 26 L16 16 Z" fill="#c8a84b" opacity="0.2"/>
+              <text x="24" y="29" text-anchor="middle" fill="#c8a84b" font-size="14" font-weight="bold">✓</text>
+            </svg>
+          </div>
+          <h3>Self-Defense</h3>
+          <p>Pepper sprays, tasers & personal safety tools</p>
+          <span class="cat-count">95+ Products</span>
+          <div class="cat-arrow">→</div>
+        </div>
+        <div class="category-card" onclick="filterProducts('accessories'); scrollToProducts();">
+          <div class="cat-bg cat-bg-5"></div>
+          <div class="cat-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="6" stroke="#c8a84b" stroke-width="2.5" fill="none"/>
+              <path d="M24 6 L24 14 M24 34 L24 42 M6 24 L14 24 M34 24 L42 24" stroke="#c8a84b" stroke-width="3" stroke-linecap="round"/>
+              <path d="M11 11 L17 17 M31 31 L37 37 M11 37 L17 31 M31 17 L37 11" stroke="#c8a84b" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Accessories</h3>
+          <p>Holsters, sheaths, lights & tactical attachments</p>
+          <span class="cat-count">200+ Products</span>
+          <div class="cat-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED / PRODUCTS SECTION -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Arsenal</span>
+        <h2 class="section-title">Featured <span class="gold">Products</span></h2>
+        <p class="section-desc">Handpicked premium weapons and gear for the discerning buyer</p>
+      </div>
+
+      <!-- FILTER BAR -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterProducts('all')" data-filter="all">All</button>
+        <button class="filter-btn" onclick="filterProducts('knives')" data-filter="knives">Knives</button>
+        <button class="filter-btn" onclick="filterProducts('bow')" data-filter="bow">Bows</button>
+        <button class="filter-btn" onclick="filterProducts('tactical')" data-filter="tactical">Tactical</button>
+        <button class="filter-btn" onclick="filterProducts('selfdefense')" data-filter="selfdefense">Self-Defense</button>
+        <button class="filter-btn" onclick="filterProducts('accessories')" data-filter="accessories">Accessories</button>
+      </div>
+
+      <!-- PRODUCT GRID -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER CTA -->
+  <section class="cta-banner">
+    <div class="cta-bg"></div>
+    <div class="container cta-content">
+      <div class="cta-text">
+        <span class="section-tag">Limited Time Offer</span>
+        <h2>Get <span class="gold">20% OFF</span> Your First Order</h2>
+        <p>Use code <strong>VANSH20</strong> at checkout. Valid on all products above ₹2,000.</p>
+      </div>
+      <div class="cta-action">
+        <a href="#products" class="btn-primary">Shop Now & Save</a>
+        <p class="cta-disclaimer">*T&C Apply. Legal products only. Age 18+ required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <div class="container about-grid">
+      <div class="about-visual">
+        <div class="about-card-main">
+          <div class="about-emblem-large">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <defs>
+                <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#f0d060"/>
+                  <stop offset="100%" style="stop-color:#8b6914"/>
+                </linearGradient>
+              </defs>
+              <polygon points="70,10 130,40 130,100 70,130 10,100 10,40" fill="none" stroke="url(#goldGrad2)" stroke-width="2"/>
+              <polygon points="70,22 118,48 118,92 70,118 22,92 22,48" fill="#c8a84b" opacity="0.07"/>
+              <text x="70" y="80" text-anchor="middle" fill="url(#goldGrad2)" font-size="40" font-family="Oswald" font-weight="700">VW</text>
+              <text x="70" y="100" text-anchor="middle" fill="#c8a84b" font-size="8" letter-spacing="3" font-family="Inter">EST. 2012</text>
+            </svg>
+          </div>
+          <div class="about-float-badge">
+            <span class="badge-num">12+</span>
+            <span class="badge-label">Years of Trust</span>
+          </div>
+        </div>
+        <div class="about-card-side">
+          <div class="about-mini-stat">
+            <span class="gold">🏆</span>
+            <div>
+              <strong>Award-Winning</strong>
+              <p>Best Tactical Store 2023</p>
+            </div>
+          </div>
+          <div class="about-mini-stat">
+            <span class="gold">📜</span>
+            <div>
+              <strong>Fully Licensed</strong>
+              <p>Government approved dealer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-tag">Our Story</span>
+        <h2 class="section-title">India's Most <span class="gold">Trusted</span> Legal Weapons Store</h2>
+        <p>Founded in 2012, Vansh Weapons has been at the forefront of India's legal weapons and tactical gear industry. We believe that every individual has the right to protect themselves and their loved ones through legal means.</p>
+        <p>With over <strong>15,000 satisfied customers</strong> across India, we pride ourselves on offering only the highest quality products from certified manufacturers, ensuring every purchase is both legal and reliable.</p>
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h4>Legally Compliant</h4>
+              <p>All products verified under Indian Arms Act 1959</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h4>Expert Consultation</h4>
+              <p>Our team guides you to the right product for your needs</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h4>Authentic Products</h4>
+              <p>Direct partnerships with certified manufacturers</p>
+            </div>
+          </div>
+        </div>
+        <a href="#products" class="btn-primary">Explore Our Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Customer Reviews</span>
+        <h2 class="section-title">What Our <span class="gold">Customers</span> Say</h2>
+      </div>
+      <div class="testimonials-carousel">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <!-- Injected by JS -->
+        </div>
+        <button class="carousel-btn prev" onclick="prevTestimonial()">‹</button>
+        <button class="carousel-btn next" onclick="nextTestimonial()">›</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Contact <span class="gold">Us</span></h2>
+        <p>Have questions about our products or legalities? Our expert team is here to help you make the right choice.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Our Store</strong>
+              <p>123, Arms Market, Sector 14, New Delhi – 110001</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Call Us</strong>
+              <p>+91 98765 43210 | +91 11 2345 6789</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <p>info@vanshweapons.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <strong>Store Hours</strong>
+              <p>Mon–Sat: 10am – 8pm | Sun: 11am – 5pm</p>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-btn" aria-label="Facebook">Facebook</a>
+          <a href="#" class="social-btn" aria-label="Instagram">Instagram</a>
+          <a href="#" class="social-btn" aria-label="YouTube">YouTube</a>
+        </div>
+      </div>
+      <div class="contact-form-wrapper">
+        <form class="contact-form" id="contactForm" onsubmit="handleContactForm(event)">
+          <h3>Send a Message</h3>
+          <div class="form-group">
+            <label for="contactName">Full Name *</label>
+            <input type="text" id="contactName" placeholder="Vansh Kumar" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactEmail">Email *</label>
+              <input type="email" id="contactEmail" placeholder="you@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="contactPhone">Phone</label>
+              <input type="tel" id="contactPhone" placeholder="+91 XXXXX XXXXX" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject *</label>
+            <select id="contactSubject" required>
+              <option value="">Select a subject</option>
+              <option>Product Inquiry</option>
+              <option>Order Status</option>
+              <option>Legal Compliance</option>
+              <option>Bulk Purchase</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message *</label>
+            <textarea id="contactMessage" rows="4" placeholder="Your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" id="contactSubmitBtn">
+            <span>Send Message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="logo-emblem">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#c8a84b" stroke-width="2" fill="none"/>
+                <text x="18" y="23" text-anchor="middle" fill="#c8a84b" font-size="12" font-weight="700" font-family="Oswald">V</text>
+              </svg>
+            </div>
+            <div class="logo-text">
+              <span class="logo-main">VANSH</span>
+              <span class="logo-sub">WEAPONS</span>
+            </div>
+          </div>
+          <p>India's most trusted legal weapons and tactical gear store since 2012. All products strictly comply with Indian law.</p>
+          <div class="footer-badges">
+            <span class="footer-badge">🛡️ Licensed Dealer</span>
+            <span class="footer-badge">✅ Arms Act Compliant</span>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="#" onclick="filterProducts('knives')">Hunting Knives</a></li>
+            <li><a href="#" onclick="filterProducts('bow')">Bows & Arrows</a></li>
+            <li><a href="#" onclick="filterProducts('tactical')">Tactical Gear</a></li>
+            <li><a href="#" onclick="filterProducts('selfdefense')">Self-Defense</a></li>
+            <li><a href="#" onclick="filterProducts('accessories')">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Subscribe for exclusive deals and new arrivals.</p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <input type="email" placeholder="Enter your email" required id="newsletterEmail" />
+            <button type="submit">→</button>
+          </form>
+          <p class="newsletter-disclaimer">No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2026 Vansh Weapons. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+        <p class="legal-notice">⚠️ All weapons sold are legal under Indian law. Buyers must provide valid ID proof. Age verification required (18+). We do not sell restricted/banned weapons.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- NOTIFICATION TOAST -->
+  <div class="notification" id="notification">
+    <span id="notificationText"></span>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top" aria-label="Back to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
