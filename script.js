@@ -592,12 +592,26 @@ function initAnimations() {
   addRevealObserver();
 }
 
+// ---- CHATBOT ----
+function toggleChatbot() {
+  const container = document.getElementById('chatbotContainer');
+  const toggle = document.getElementById('chatbotToggle');
+  container.classList.toggle('open');
+  toggle.classList.toggle('active');
+  
+  if (container.classList.contains('open')) {
+    showNotification('Arsenal Assistant ready! 🤖');
+  }
+}
+
 // ---- KEYBOARD SHORTCUT ----
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeSearch();
     document.getElementById('cartSidebar').classList.remove('open');
     document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('chatbotContainer').classList.remove('open');
+    document.getElementById('chatbotToggle').classList.remove('active');
   }
   if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
     e.preventDefault();
