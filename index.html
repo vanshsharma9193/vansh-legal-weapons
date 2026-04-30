@@ -617,33 +617,27 @@
   <!-- BACK TO TOP -->
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top" aria-label="Back to top">↑</button>
 
-  <!-- CHATBOT -->
-  <div class="chatbot-wrapper">
-    <div class="chatbot-container" id="chatbotContainer">
-      <div class="chatbot-header">
-        <div class="chatbot-header-info">
-          <div class="chatbot-logo">VW</div>
-          <span class="chatbot-title">Arsenal Assistant</span>
-        </div>
-        <button class="close-chatbot" onclick="toggleChatbot()" title="Close chat">✕</button>
-      </div>
-      <div class="chatbot-iframe-container">
-        <iframe
-          src="https://www.chatbase.co/chatbot-iframe/gAcUHc_u2sWA1IESfjhbx"
-          width="100%"
-          style="height: 100%;"
-          frameborder="0"
-          id="chatbotIframe"
-        ></iframe>
-      </div>
-    </div>
-    <button class="chatbot-toggle-btn" id="chatbotToggle" onclick="toggleChatbot()" title="Chat with us">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-      </svg>
-      <span class="chatbot-dot"></span>
-    </button>
-  </div>
+  <!-- VOICEFLOW AI AGENT -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '69f1ab462081880a37995037' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            },
+            /* Position the widget on the left */
+            configuration: {
+              layout: 'left'
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
 
   <script src="script.js"></script>
 </body>
